@@ -63,7 +63,7 @@ export class Board {
         }
     }
 
-    private addRooks(){
+    private addRooks() {
         for (let i = 0; i < 8; i++) {
             new Rook(Colors.BLACK, this.getCell(0, 0))
             new Rook(Colors.BLACK, this.getCell(7, 0))
@@ -72,12 +72,20 @@ export class Board {
         }
     }
 
-    public hilightCells(selectedCell: Cell | null){
-
+    public hilightCells(selectedCell: Cell | null) {
+        for (let i = 0; i < this.cells.length; i++) {
+            const row = this.cells[i];
+            for (let j = 0; j < row.length; j++) {
+                const target = row[j];
+                target.available = !!selectedCell?.figure?.canMove(target);
+            }
+        }
     }
 
-    public getCopyBoard(){
-        
+    public getCopyBoard(): Board {
+        const newBoard = new Board();
+        newBoard.cells = this.cells;
+        return newBoard;
     }
 
     /**
