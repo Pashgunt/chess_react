@@ -50,3 +50,10 @@
     border-radius: 50%;
     background: rgb(9, 141, 77);
 }
+
+.lost{
+    height: calc(50vh - 60px);
+    padding: 30px;
+    margin: 0 0 0 50px;
+    background-color: lightgray;
+}
